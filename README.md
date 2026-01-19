@@ -8,15 +8,6 @@
 
 ---
 
-## 📑 Table of Contents
-* [Project Overview](#-project-overview)
-* [Key Features](#-key-features)
-* [Design Language](#-design-language)
-* [Technical Implementation](#-technical-implementation)
-* [Project Team](#-project-team)
-
----
-
 ## 🚀 Project Overview
 This project simulates a real-world shopping experience for perfumes. It features a modern 2D interface with a professional color palette and interactive elements built entirely with core web technologies.
 
@@ -26,7 +17,7 @@ This project simulates a real-world shopping experience for perfumes. It feature
 * Simulate a secure checkout and user authentication flow.
 
 ## ✨ Key Features
-* **Dynamic Product Catalog**: The Home page displays 7 signature products with high-quality imagery and detailed descriptions.
+* **Dynamic Product Catalog**: The Home page displays signature products with high-quality imagery and detailed descriptions.
 * **Category Filtering**: Separate sections for "For Men" and "For Women" to streamline the shopping experience.
 * **Top Sales Tracking**: A dedicated page for the highest-selling products, arranged in a clean grid layout.
 * **Advanced Shopping Cart**: 
@@ -41,8 +32,8 @@ This project simulates a real-world shopping experience for perfumes. It feature
 * **CSS3**: Features custom hover transitions, grid/flexbox alignments, and styled form inputs.
 * **JavaScript**: Handles the state management of the shopping cart, DOM manipulation for quantity changes, and price logic.
 
-## 👤 Author
+## 👤 Developer
 **Muhammad Tasawer Sadiq** 
 
 ---
-*Created for IICT Semester Project - 2025* [cite: 184]
+
