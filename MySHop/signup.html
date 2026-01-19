@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="signup.css"/>  
+    <title>MyShop</title>
+    <link rel="icon" type="image/png" href="Pics/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+ <img class="logo" src="Pics/logo.png" alt="MyShop Logo" >
+    <div>
+        <ul>
+            <li><a href="home.html" >Home</a></li>        
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="top_sales.html">Top Sales</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html" class="active">Sign up</a></li>
+            <li><a href="cart.html">Cart <i class="fa-solid fa-cart-arrow-down"></i></a></li>                
+        </ul>
+    </div>
+
+
+    <h1>Signup</h1>
+<form onsubmit="showSignupMessage()">
+    <div class="box">
+        <i class="fa-solid fa-user left-icon"></i>
+        <input id="username" type="text" placeholder="Username">
+    </div>
+
+    <div class="box">
+              <i class="fa-solid fa-envelope left-icon"></i>
+        <input id="email" type="text" placeholder="Email">
+    </div>
+
+
+    <div class="box">
+        <i class="fa-solid fa-lock left-icon"></i>
+        <input id="password" type="password" placeholder="Password">
+    </div>
+
+    <button class="signup_button">Sign Up</button>
+</form>
+
+<script>
+function showSignupMessage() {
+    var user = document.getElementById("username").value;
+    var mail = document.getElementById("email").value;
+    var pass = document.getElementById("password").value;
+
+    if (user == "" || mail == "" || pass == "") {
+        alert("Please fill in all fields!");
+        return false;  
+    }
+
+    alert("Signed up successfully!");
+    return true; 
+}
+</script>
+
+    <p class="signup">
+        Already have account ?
+        <span class="login_link"><a href="login.html">Login</a></span>
+    </p>
+<footer>
+    <div class="footer-left">
+            <p>Home</p>
+            <p>Shop</p>
+            <p>About</p>
+            <p>Collections</p>
+            <p>Contact</p>
+    </div>
+    <div class="footer-left">
+            <p>Help Center</p>
+            <p>Shipping & Returns</p>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+    </div>
+    
+    <div class="footer-left">
+        <div class="icon">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        </div>
+        <p>Subscribe to get latest update!</p>
+        <p><strong>Subscribe Now</strong></p>
+         <input type="email" id="emailInput" placeholder="Your email" class="email">
+        <button  onclick="subscribe()" class="sub_btn">Subscribe</button>
+        <p><small>copyright©2025 MyShop</small></p> 
+    </div> 
+    
+    <script>
+        function subscribe() {
+            let email = document.getElementById("emailInput").value;
+
+            if (email === "") {  
+                alert("Please enter your email first!");
+}
+else {
+                alert("Thanks for subscribing!");
+                document.getElementById("emailInput").value = ""; 
+            }
+        }
+    </script>
+</footer>
+
+
+
+
+</body>
+</html>

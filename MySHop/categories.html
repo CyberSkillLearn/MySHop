@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="categories.css"/>  
+    <title>MyShop</title>
+    <link rel="icon" type="image/png" href="Pics/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+        <img class="logo" src="Pics/logo.png" alt="MyShop Logo" >
+    <div>
+        <ul>
+            <li><a href="home.html" >Home</a></li>        
+            <li><a href="categories.html" class="active">Categories</a></li>
+            <li><a href="top_sales.html" >Top Sales</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="cart.html">Cart <i class="fa-solid fa-cart-arrow-down"></i></a></li>                
+        </ul>
+    </div>
+
+<div class="top">
+    <h2>For Men</h2>
+</div>
+
+<div class="products">
+
+    <div class="product_card">
+        <div class="product_image">
+            <img src="Pics/t1.jpg" alt="Royal oud">
+        </div>
+        <div class="product_info">
+            <h3>Royal oud</h3>
+            <p class="scent_type">Crisp bergamot</p>
+            <p class="price">$178.00</p>
+            <button class="cart_btn" onclick="addToCart('Royal oud', 'Crisp bergamot', 178.00, 'Pics/t1.jpg')">ADD TO CART</button>
+        </div>
+    </div>
+
+    <div class="product_card">
+        <div class="product_image">
+            <img src="Pics/t2.jpg" alt="Azure code">
+        </div>
+        <div class="product_info">
+            <h3>Azure code</h3>
+            <p class="scent_type">Bold scent</p>
+            <p class="price">$157.00</p>
+            <button class="cart_btn" onclick="addToCart('Azure code', 'Bold scent', 157.00, 'Pics/t2.jpg')">ADD TO CART</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="top">
+    <h2>For Women</h2>
+</div>
+
+<div class="products">
+
+    <div class="product_card">
+        <div class="product_image">
+            <img src="Pics/t3.jpg" alt="Ambre mystique">
+        </div>
+        <div class="product_info">
+            <h3>Ambre mystique</h3>
+            <p class="scent_type">Dawn glow</p>
+            <p class="price">$149.00</p>
+            <button class="cart_btn" onclick="addToCart('Ember mystique', 'Dawn glow', 149.00, 'Pics/t3.jpg')">ADD TO CART</button>
+        </div>
+    </div>
+
+    <div class="product_card">
+        <div class="product_image">
+            <img src="Pics/t4.jpg" alt="Jardin secret">
+        </div>
+        <div class="product_info">
+            <h3>Jardin secret</h3>
+            <p class="scent_type">Secret garden</p>
+            <p class="price">$125.00</p>
+            <button class="cart_btn" onclick="addToCart('Jardin secret', 'Secret garden', 125.00, 'Pics/t4.jpg')">ADD TO CART</button>
+        </div>
+    </div>
+
+</div>
+
+
+ <footer>
+    <div class="footer-left">
+            <p>Home</p>
+            <p>Shop</p>
+            <p>About</p>
+            <p>Collections</p>
+            <p>Contact</p>
+    </div>
+    <div class="footer-left">
+            <p>Help Center</p>
+            <p>Shipping & Returns</p>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+    </div>
+    
+    <div class="footer-left">
+        <div class="icon">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+
+        </div>
+        <p>Subscribe to get latest update!</p>
+        <p><strong>Subscribe Now</strong></p>
+        <input type="email" id="emailInput" placeholder="Your email" class="email">
+        <button onclick="subscribe()" class="sub_btn">Subscribe</button>
+        <p><small>copyright©2025 MyShop</small></p>
+        
+    </div> 
+    <script>
+        function subscribe() {
+            let email = document.getElementById("emailInput").value;
+
+            if (email === "") {  
+                alert("Please enter your email first!");
+            } 
+            else {
+                alert("Thanks for subscribing!");
+                document.getElementById("emailInput").value = ""; 
+            }
+        }
+         function addToCart(name, tagline, price, image) {
+        
+            let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+            
+        
+            let existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    tagline: tagline,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+        
+            localStorage.setItem('myShopCart', JSON.stringify(cart));
+            
+
+            window.location.href = 'cart.html';
+        }
+    </script>
+ </footer>
+</body>
+</html>

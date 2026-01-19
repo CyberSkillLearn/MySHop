@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="home.css">  
+    <title>MyShop</title>
+    <link rel="icon" type="image/png" href="Pics/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <img class="logo" src="Pics/logo.png" alt="MyShop Logo" >
+    <div>
+        <ul>
+            <li><a href="home.html" class="active">Home</a></li>       
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="top_sales.html">Top Sales</a></li>
+            <li><a href="login.html" >Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="cart.html">Cart <i class="fa-solid fa-cart-arrow-down"></i></a></li>                
+        </ul>
+    </div>
+<div class="tbox">
+    <h1 class="ttext">The Art of <br>Intimate <br>Fragrance</h1>
+</div>
+
+    <div class="products_container">
+
+
+    <div class="product_box">
+        <img src="Pics/img1.jpg" alt="Ember notes">
+        <h3>Ember notes</h3>
+        <p>Cool breeze</p>
+        <p class="price">$95.00</p>
+        <button class="cart_btn" onclick="addToCart('Ember notes', 'Cool breeze', 95.00, 'Pics/img1.jpg')">ADD TO CART</button>
+    </div>
+
+    <div class="product_box">
+        <img src="Pics/img2.jpg" alt="Shadow essence">
+        <h3>Shadow essence</h3>
+        <p>warm notes</p>
+        <p class="price">$85.00</p>
+         <button class="cart_btn" onclick="addToCart('Shadow essence', 'warm notes', 85.00, 'Pics/img2.jpg')">ADD TO CART</button>
+    </div>
+
+
+    <div class="product_box">
+        <img src="Pics/img3.jpg" alt="Velvet blossom">
+        <h3>Velvet blossom</h3>
+        <p>Soft floral scent</p>
+        <p class="price">$78.00</p>
+       <button class="cart_btn" onclick="addToCart('Velvet blossom', 'Soft floral scent', 78.00, 'Pics/img3.jpg')">ADD TO CART</button>
+    </div>
+
+    <div class="product_box">
+        <img src="Pics/img4.jpg" alt="Pulse rush">
+        <h3>Pulse rush</h3>
+        <p>Energetic sporty scent</p>
+        <p class="price">$69.00</p>
+   <button class="cart_btn" onclick="addToCart('Pulse rush', 'Energetic sporty scent', 69.00, 'Pics/img4.jpg')">ADD TO CART</button>
+    </div>
+
+
+    <div class="product_box">
+        <img src="Pics/img5.jpg" alt="Golden ray">
+        <h3>Golden ray</h3>
+        <p>Bright citrus burst</p>
+        <p class="price">$40.00</p>
+<button class="cart_btn" onclick="addToCart('Golden ray', 'Bright citrus burst', 40.00, 'Pics/img5.jpg')">ADD TO CART</button>
+    </div>
+
+
+    <div class="product_box">
+        <img src="Pics/img6.jpg" alt="Cotton whisper">
+        <h3>Cotton whisper</h3>
+        <p>Clean gentle musk</p>
+        <p class="price">$39.00</p>
+<button class="cart_btn" onclick="addToCart('Cotton whisper', 'Clean gentle musk', 39.00, 'Pics/img6.jpg')">ADD TO CART</button>
+    </div>
+
+</div>
+
+
+
+<footer>
+    <div class="footer-left">
+            <p>Home</p>
+            <p>Shop</p>
+            <p>About</p>
+            <p>Collections</p>
+            <p>Contact</p>
+    </div>
+    <div class="footer-left">
+            <p>Help Center</p>
+            <p>Shipping & Returns</p>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+    </div>
+    
+    <div class="footer-left">
+        <div class="icon">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+
+        </div>
+        <p>Subscribe to get latest update!</p>
+        <p><strong>Subscribe Now</strong></p>
+        <input type="email" id="emailInput" placeholder="Your email" class="email">
+        <button  onclick="subscribe()" class="sub_btn">Subscribe</button>
+        <p><small>copyright©2025 MyShop</small></p>
+        
+    </div> 
+     <script>
+        function subscribe() {
+            let email = document.getElementById("emailInput").value;
+
+            if (email === "") {  
+                alert("Please enter your email first!");
+            } 
+            else {
+                alert("Thanks for subscribing!");
+                document.getElementById("emailInput").value = ""; 
+            }
+        }
+         function addToCart(name, tagline, price, image) {
+
+            let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+            
+        
+            let existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    tagline: tagline,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            // Save back to localStorage
+            localStorage.setItem('myShopCart', JSON.stringify(cart));
+            
+            // Redirect to cart page
+            window.location.href = 'cart.html';
+        }
+    </script>
+</footer>
+</body>
+</html>

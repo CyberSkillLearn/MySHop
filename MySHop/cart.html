@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="cart.css">
+    <title>Your Cart - MyShop</title>
+    <link rel="icon" type="image/png" href="Pics/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <img class="logo" src="Pics/logo.png" alt="MyShop Logo">
+    <div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="top_sales.html">Top Sales</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="cart.html" class="active">Cart <i class="fa-solid fa-cart-arrow-down"></i></a></li>
+        </ul>
+    </div>
+    <div class="cart_wrapper">
+        
+        <div class="cart_header_row">
+            <div class="col-item">Added Items</div>
+            <div class="col-price">Price</div>
+            <div class="col-qty">Quantity</div>
+            <div class="col-total">Total</div>
+        </div>
+
+        <div id="cart_items_container">
+        </div>
+
+        <div class="checkout_container">
+            <button class="checkout_btn" onclick="proceedToCheckout()">Proceed To Checkout</button>
+        </div>
+
+    </div>
+    <footer>
+        <div class="footer-left">
+            <p>Home</p>
+            <p>Shop</p>
+            <p>About</p>
+            <p>Collections</p>
+            <p>Contact</p>
+        </div>
+        <div class="footer-left">
+            <p>Help Center</p>
+            <p>Shipping & Returns</p>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+        </div>
+
+        <div class="footer-left">
+            <div class="icon">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-brands fa-facebook-f"></i>
+            </div>
+            <p>Subscribe to get latest update!</p>
+            <p><strong>Subscribe Now</strong></p>
+            <input type="email" id="emailInput" placeholder="Your email" class="email">
+            <button onclick="subscribe()" class="sub_btn">Subscribe</button>
+            <p><small>copyright©2025 MyShop</small></p>
+        </div>
+    </footer>
+
+    <script>
+        function subscribe() {
+            let email = document.getElementById("emailInput").value;
+            if (email === "") {
+                alert("Please enter your email first!");
+            } else {
+                alert("Thanks for subscribing!");
+                document.getElementById("emailInput").value = "";
+            }
+        }
+
+      function loadCart() {
+    let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+    let container = document.getElementById('cart_items_container');
+    container.innerHTML = ''; 
+
+    if(cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center; padding:50px;">Your cart is empty.</p>';
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        let total = item.price * item.quantity;
+        
+        let html = `
+        <div class="cart_item_row">
+            <div class="col-item item_info">
+                <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/100x100?text=No+Image'"> 
+                <div class="item_text">
+                    <h4>${item.name}</h4>
+                    <p>${item.tagline}</p>
+                </div>
+            </div>
+            <div class="col-price">$ ${item.price.toFixed(2)}</div>
+            <div class="col-qty">
+                <div class="qty_selector">
+                    <button onclick="updateQty(${index}, -1)">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="updateQty(${index}, 1)">+</button>
+                </div>
+            </div>
+            <div class="col-total">
+                $ ${total.toFixed(2)}
+                <button class="remove_btn" onclick="removeItem(${index})"><i class="fa-solid fa-circle-xmark"></i></button>
+            </div>
+        </div>
+        `;
+        container.innerHTML += html;
+    });
+}
+
+function updateQty(index, change) {
+    let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+    if (cart[index]) {
+        cart[index].quantity += change;
+        if (cart[index].quantity < 1) cart[index].quantity = 1; 
+        localStorage.setItem('myShopCart', JSON.stringify(cart));
+        loadCart();
+    }
+}
+
+function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('myShopCart', JSON.stringify(cart));
+    loadCart();
+}
+
+function proceedToCheckout() {
+    let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+    if(cart.length === 0) {
+        alert("Your cart is empty! Please add items before proceeding.");
+    } else {
+        window.location.href = 'payment.html';
+    }
+}
+
+window.onload = loadCart;
+    </script>
+</body>
+</html>

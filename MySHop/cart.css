@@ -1,0 +1,135 @@
+/* Cart Page Specific Styles */
+
+/* Wrapper to center content and give it space */
+.cart_wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: white;
+    min-height: 400px;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Row (Black bar) */
+.cart_header_row {
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 15px 20px;
+    font-weight: bold;
+    align-items: center;
+}
+
+/* Column Widths (Shared between header and rows) */
+.col-item { width: 40%; }
+.col-price { width: 20%; text-align: left; }
+.col-qty   { width: 20%; text-align: left; }
+.col-total { width: 20%; text-align: left; display: flex; justify-content: space-between; align-items: center;}
+
+/* Item Row (Product details) */
+.cart_item_row {
+    display: flex;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light grey background like image */
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Item Info (Image + Text) */
+.item_info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.item_info img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain; /* Keeps aspect ratio */
+    background: white;
+}
+
+.item_text h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.item_text p {
+    margin: 5px 0 0;
+    font-size: 13px;
+    color: #666;
+}
+
+/* Quantity Selector */
+.qty_selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty_selector button {
+    background: transparent;
+    border: 1px solid #333;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.qty_selector button:hover {
+    background: #ddd;
+}
+
+/* Remove Button (X icon) */
+.remove_btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+}
+
+.remove_btn:hover {
+    color: red;
+}
+
+/* Checkout Section */
+.checkout_container {
+    display: flex;
+    justify-content: flex-end; /* Aligns button to right */
+    padding: 20px 0;
+}
+
+.checkout_btn {
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkout_btn:hover {
+    background-color: #333;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .cart_header_row { display: none; } /* Hide header on mobile */
+    .cart_item_row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .col-item, .col-price, .col-qty, .col-total {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .col-total {
+        font-weight: bold;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+    }
+}

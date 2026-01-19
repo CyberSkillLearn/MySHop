@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="payment.css"/>  
+    <title>MyShop</title>
+    <link rel="icon" type="image/png" href="Pics/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+        <img class="logo" src="Pics/logo.png" alt="MyShop Logo" >
+    <div>
+        <ul>
+            <li><a href="home.html" >Home</a></li>        
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="top_sales.html" class="active">Top Sales</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="cart.html">Cart <i class="fa-solid fa-cart-arrow-down"></i></a></li>                
+        </ul>
+    </div>
+
+
+<h1>Credit Card</h1>
+
+<input type="text" id="box1" size="30" placeholder="Cardholder Name"><br><br>
+<input type="text" id="box2" size="30" placeholder="Card Number"><br><br>
+
+
+<input type="text" id="box3" size="5" placeholder="MM/YY">
+
+<div style="display:inline-block; width:95px;"></div>
+
+<input type="text" id="box4" size="5" placeholder="CVV"><br><br>
+<button class="payment" location.href="'home.html'" id="pay1" >P A Y</button>
+
+
+<script>
+    document.getElementById("pay1").onclick = function () {
+
+        let box1 = document.getElementById("box1").value;
+        let box2 = document.getElementById("box2").value;
+        let box3 = document.getElementById("box3").value;
+        let box4 = document.getElementById("box4").value;
+
+        if(box1 === "" || box2 === "" || box3 === "" || box4 === ""){
+            alert("Please fill in the blanks");
+        } 
+        else {
+            alert("Payment Successful!");
+             window.location.href = "home.html";
+        }
+    }
+</script>
+
+
+ <footer>
+    <div class="footer-left">
+            <p>Home</p>
+            <p>Shop</p>
+            <p>About</p>
+            <p>Collections</p>
+            <p>Contact</p>
+    </div>
+    <div class="footer-left">
+            <p>Help Center</p>
+            <p>Shipping & Returns</p>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+    </div>
+    
+    <div class="footer-left">
+        <div class="icon">
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+
+        </div>
+        <p>Subscribe to get latest update!</p>
+        <p><strong>Subscribe Now</strong></p>
+        <input type="email" id="emailInput" placeholder="Your email" class="email">
+        <button onclick="subscribe()" class="sub_btn">Subscribe</button>
+        <p><small>copyright©2025 MyShop</small></p>
+        
+    </div> 
+    <script>
+        function subscribe() {
+            let email = document.getElementById("emailInput").value;
+
+            if (email === "") {  
+                alert("Please enter your email first!");
+            } 
+            else {
+                alert("Thanks for subscribing!");
+                document.getElementById("emailInput").value = ""; 
+            }
+        }
+    </script>
+ </footer>
+
+
+
+</body>
+</html>
